@@ -11,9 +11,12 @@ var gotoNextStep = function(e) {
 }
 
 var changeSets = function(e) {
+  e.preventDefault();
+  alert('in changeSets')
+  var trg = $(this).data('target');
   $('#workoutSet ul').removeClass('active');
-  $(e.target.href).find('.step1').addClass('active');
-  $(e.target.href).addClass('active');
+  $(trg).find('.step1').addClass('active');
+  $(trg).addClass('active');
 }
 
 $(function() {
@@ -39,5 +42,5 @@ $(function() {
 			alert("Problem fetching exercises: " + error.code + " " + error.message);
 		}
 	});
-  $('.setList').on('click', 'a', changeSets);
+  $('#setList').on('touch', 'li', changeSets);
 });

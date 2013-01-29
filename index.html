@@ -38,19 +38,19 @@
 			<header class="popover-header">
 				<h3 class="title">Change Workout</h3>
 			</header>
-			<ul class="setList">
-				<li><a href="#workoutSet1">One</a></li>
-				<li><a href="#workoutSet2">Two</a></li>
-				<li><a href="#workoutSet3">Three</a></li>
+			<ul class="list" id="setList">
+				<li data-target="#workoutSet1">One</li>
+				<li data-target="#workoutSet2">Two</li>
+				<li data-target="#workoutSet3">Three</li>
 			</ul>
 		</div>
-
-  <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-  <div class="content">
-    <div class="content-padded">
-		<div id="workoutSet"></div>
+    <footer class="bar-footer bar-standard"><p>A present from Bill</p></footer>
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content">
+      <div class="content-padded">
+  		<div id="workoutSet"></div>
+      </div>
     </div>
-  </div>
 
   </body>
 </html>
