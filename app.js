@@ -1,12 +1,19 @@
 var gotoNextStep = function(e) {
 	e.preventDefault();
-	var next = '#step_' + (parseInt($(this).data('step')) + 1).toString();
+	var currSet = $(this).closest('#workoutSet'),
+      next = '.step_' + (parseInt($(this).data('step')) + 1).toString();
 	if ($(next).length > 0) {
 		$(this).removeClass('active');
-		$(next).addClass('active');
+		$(currSet).find('ul.active').find(next).addClass('active');
 	} else {
 		$(this).html('You Finished!!');
 	}
+}
+
+var changeSets = function(e) {
+  $('#workoutSet ul').removeClass('active');
+  $(e.target.href).find('.step1').addClass('active');
+  $(e.target.href).addClass('active');
 }
 
 $(function() {
@@ -15,16 +22,16 @@ $(function() {
 
 	query.find({
 		success: function(results) {
-			var exerString = '<ul class="active">', currSet = "1";
+			var exerString = '<ul class="active" id="workoutSet1">', currSet = "1";
 			$.each(results, function() {
 				if (currSet !== this.get('workout')) {
-					exerString = exerString + '</ul><ul>';
 					currSet = this.get('workout');
+					exerString = exerString + '</ul><ul id="workoutSet' + currSet + '">';
 				}
-				exerString = exerString + '<li class="exerciseStep" id="step_' + this.get('step') + '" data-step="' + this.get('step') + '"><span class="stepTitle"">Step' + this.get('step') + '</span><span class="stepInstruction">' + this.get('instruction') + '</span><span class="stepReps"> X ' + this.get('repetitions') + ' times</span></li>'
+				exerString = exerString + '<li class="exerciseStep step_' + this.get('step') + '" data-step="' + this.get('step') + '"><span class="stepTitle"">Step ' + this.get('step') + '</span><span class="stepInstruction">' + this.get('instruction') + '</span><span class="stepReps">X<br><br>' + this.get('repetitions') + ' times</span></li>'
 			});
 			exerString = exerString + '</ul>';
-			$('#workoutSet ul').append(exerString);
+			$('#workoutSet').append(exerString);
 			$('#workoutSet').find('.exerciseStep').first().addClass('active');
 			$('#workoutSet').on('click', '.exerciseStep', gotoNextStep);
 		},
@@ -32,4 +39,5 @@ $(function() {
 			alert("Problem fetching exercises: " + error.code + " " + error.message);
 		}
 	});
+  $('.setList').on('click', 'a', changeSets);
 });

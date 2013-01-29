@@ -20,23 +20,15 @@
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png">
 
     <!-- Include the compiled Ratchet CSS -->
-    <link rel="stylesheet" href="/dist/ratchet.css">
-    <link rel="stylesheet" href="/dist/app.css">
+    <link rel="stylesheet" href="./lib/ratchet.css">
+    <link rel="stylesheet" href="./app.css">
 
     <!-- Include the compiled Ratchet JS -->
-    <script src="/dist/ratchet.js"></script>
-	<script src="http://www.parsecdn.com/js/parse-1.1.16.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.9.0.min.js"></script>
-	<script src="/dist/app.js"></script>
-
-    <!-- Intro paragraph styles. Delete once you start using this page -->
-    <style type="text/css">
-        .welcome {
-          line-height: 1.5;
-          color: #555;
-        }
-    </style>
-
+    <script src="./lib/ratchet.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.1.16.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script src="./lib/parseKey.js"></script>
+    <script src="./app.js"></script>
   </head>
   <body>
 	  <header class="bar-title">
@@ -46,17 +38,17 @@
 			<header class="popover-header">
 				<h3 class="title">Change Workout</h3>
 			</header>
-			<ul class="list">
-				<li>One</li>
-				<li>Two</li>
-				<li>Three</li>
+			<ul class="setList">
+				<li><a href="#workoutSet1">One</a></li>
+				<li><a href="#workoutSet2">Two</a></li>
+				<li><a href="#workoutSet3">Three</a></li>
 			</ul>
 		</div>
 
   <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
   <div class="content">
     <div class="content-padded">
-		<div id="workoutSet"><ul></ul></div>
+		<div id="workoutSet"></div>
     </div>
   </div>
 
