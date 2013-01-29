@@ -1,0 +1,4 @@
+.exerciseStep { display: none; height: 100%; width: 100%; padding: 20px; text-align: center; font-size: 24px; }
+.exerciseStep.active, .exerciseStep span { display: block; }
+.exerciseStep span { padding-bottom: 20px; }
+.stepTitle { font-weight: bold; }
